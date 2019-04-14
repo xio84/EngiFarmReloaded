@@ -72,16 +72,12 @@ public class SideProduct extends Product {
                 inventory.remove(temp);
             }
         }
-        for (Product q : madeOf
-             ) {
-            inventory.add(q);
-        }
+        inventory.addAll(madeOf);
         madeOf.clear();
         return result;
     }
 
     public void make(ArrayList<Product> inventory){
-        assert available(inventory) : "Product cant be ready!";
         if (available(inventory)) {
             for (Set<Product> p: ingredients
             ) {
@@ -96,6 +92,7 @@ public class SideProduct extends Product {
             ) {
                 inventory.remove(q);
             }
+            ready = true;
         }
     }
 

@@ -6,9 +6,9 @@ public abstract class Product {
     private int price;
     private int expiretick;
     @Contract(pure = true)
-    protected boolean expired(){return expiretick<=0;}
+    boolean expired(){return expiretick<=0;}
 
-    public Product(int price, int expiretick) {
+    Product(int price, int expiretick) {
         this.price = price;
         this.expiretick = expiretick;
     }

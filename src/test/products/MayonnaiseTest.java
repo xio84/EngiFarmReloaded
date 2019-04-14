@@ -1,4 +1,4 @@
-package test;
+package products;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,11 +19,11 @@ public class MayonnaiseTest {
             for (Product P : S
                  ) {
                 //System.out.println(P.toString());
-                if (P.equals(new DuckEgg())){
-                    System.out.println(P.toString());
-                }
+//                if (P.equals(new DuckEgg())){
+//                    System.out.println(P.toString());
+//                }
             }
-            System.out.println(i);
+//            System.out.println(i);
             Assert.assertTrue(i.toString(),S.contains(new DuckEgg()));
             Assert.assertTrue(S.contains(new ChickenEgg()));
             i++;
@@ -45,5 +45,16 @@ public class MayonnaiseTest {
 
     @Test
     public void make() {
+        Mayonnaise M = new Mayonnaise();
+        ArrayList<Product> inventory = new ArrayList<>();
+        inventory.add(new DuckEgg());
+        inventory.add(new DuckMeat());
+        M.make(inventory);
+        Assert.assertFalse(M.isReady());
+        Assert.assertTrue(inventory.contains(new DuckEgg()));
+        inventory.add(new ChickenEgg());
+        M.make(inventory);
+        Assert.assertFalse(inventory.contains(new DuckEgg()));
+        Assert.assertTrue(M.isReady());
     }
 }
