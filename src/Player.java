@@ -59,4 +59,31 @@ public class Player extends Renderable{
     public void setInventory(int _index, Product _product){
         // inventory.setData(_product, _index);
     }
+
+    public void move(char _direction){
+        if (_direction == 'W' || _direction == 'w'){
+            currentView = 'W';
+            if (currentPosition.getY() != 0){
+                currentPosition.setY(currentPosition.getY()-1);
+            }
+        } else if (_direction == 'A' || _direction == 'a'){
+            currentView = 'A';
+            if (currentPosition.getX() != 0){
+                currentPosition.setX(currentPosition.getX()-1);
+            }
+        } else if (_direction == 'S' || _direction == 's'){
+            currentView = 'S';
+            if (currentPosition.getY() != 20){
+                currentPosition.setY(currentPosition.getY()+1);
+            }
+        } else if (_direction == 'D' || _direction == 'd'){
+            currentView = 'D';
+            if (currentPosition.getX() != 20){
+                currentPosition.setX(currentPosition.getX()+1);
+            }
+        } else {
+            cout << "JANGAN SERONG-SERONG MAS, FOKUS";
+        }
+    }
+
 }
