@@ -1,10 +1,9 @@
 import point.Point;
 import products.Product;
 import renderables.Renderable;
+import linkedlist.LinkedList;
 
-import java.util.LinkedList;
-
-public class Player implements Renderable {
+public class Player implements Renderable{
     protected int money;
     protected int water;
     protected LinkedList<Product> inventory;
