@@ -19,7 +19,11 @@ public class Player implements Renderable{
     }
 
     public Player(int _money, int _water, LinkedList<Product> _inventory, Point _currentPosition, char _currentView){
-
+        money = _money;
+        water = _water;
+        currentView = _currentView;
+        currentPosition = new Point( _currentPosition.getX(), _currentPosition.getY());
+        inventory = _inventory;
     }
 
     public int getMoney(){
