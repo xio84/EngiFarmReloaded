@@ -5,7 +5,7 @@ import point.Point;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-class FarmAnimal {
+public class FarmAnimal {
 	protected boolean hungry;
 	protected int hungrytick;
 	protected final int defaulthungrytick = 5;
