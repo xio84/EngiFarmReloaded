@@ -1,5 +1,7 @@
 package cell;
 
+import renderables.Renderable;
+
 public class Mixer extends Facility implements Renderable {
 
   public Mixer() {

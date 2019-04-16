@@ -1,5 +1,7 @@
 package cell;
 
+import renderables.Renderable;
+
 public class Truck extends Facility implements Renderable {
   private int CooldownTime;
 

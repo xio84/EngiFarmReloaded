@@ -1,5 +1,7 @@
 package cell;
 
+import renderables.Renderable;
+
 public class Cell implements Renderable {
   protected boolean Grass;
 

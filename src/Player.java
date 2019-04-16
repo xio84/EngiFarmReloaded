@@ -1,21 +1,22 @@
-import java.io.*;
-import java.util.*;
-import Point.*;
-import LinkedList.*;
+import point.Point;
+import products.Product;
+import renderables.Renderable;
 
-public class Player implements Renderable{
+import java.util.LinkedList;
+
+public class Player implements Renderable {
     protected int money;
     protected int water;
     protected LinkedList<Product> inventory;
-    protected Point currentPostion;
-    protected Char currentView;
+    protected Point currentPosition;
+    protected char currentView;
 
     public Player(){
         money = 0;
         water = 0;
         currentView = 'W';
         inventory = new LinkedList<Product>();
-        currentPostion(0,0);
+        currentPosition = new Point(0,0);
     }
 
     public Player(int _money, int _water, LinkedList<Product> _inventory, Point _currentPosition, char _currentView){
@@ -31,10 +32,10 @@ public class Player implements Renderable{
     }
 
     public Point getCurrentPosition(){
-        return currentPostion;
+        return currentPosition;
     }
 
-    public Char getCurrentView(){
+    public char getCurrentView(){
         return currentView;
     }
 
@@ -53,7 +54,7 @@ public class Player implements Renderable{
     }
 
     public void setCurrentPosition(Point _currentPosition){
-        currentPostion = _currentPosition;
+        currentPosition = _currentPosition;
     }
 
     public void setInventory(int _index, Product _product){

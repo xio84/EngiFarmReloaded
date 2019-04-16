@@ -1,6 +1,7 @@
 package animals;
 
 import point.Point;
+import renderables.Renderable;
 
 import java.util.concurrent.ThreadLocalRandom;
 

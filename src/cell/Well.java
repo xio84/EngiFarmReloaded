@@ -1,5 +1,7 @@
 package cell;
 
+import renderables.Renderable;
+
 public class Well extends Facility implements Renderable {
 
   public Well() {
