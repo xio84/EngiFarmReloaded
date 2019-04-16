@@ -3,7 +3,7 @@ package animals;
 import java.util.concurrent.ThreadLocalRandom;
 
 class MilkProducingFarmAnimal extends MeatProducingFarmAnimal {
-	void move(){
+	public void move(){
 		int minimum = 1, maximum = 4;
 		int chooseMoveType = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 		hungrytick -= 1;

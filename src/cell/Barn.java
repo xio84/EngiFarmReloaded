@@ -1,10 +1,13 @@
 package cell;
 
-public class Barn extends Land {
+public class Barn extends Land implements Renderable {
 
   public Barn() {
     super();
-    setRep('b');
+  }
+
+  public char render(){
+    return 'b';
   }
   
 }

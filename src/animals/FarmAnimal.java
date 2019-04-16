@@ -11,13 +11,16 @@ class FarmAnimal {
 	protected final int defaulthungrytick = 5;
 	protected boolean producingproduct;
 	protected Point currentPosition;
-	int getHungryTick() {
+
+	protected int getHungryTick() {
 		return hungrytick;
 	}
-	void setHungryTick(int _hungrytick){
+
+	protected void setHungryTick(int _hungrytick){
 		hungrytick = _hungrytick;
 	}
-	void move(){
+
+	protected void move(){
 		int minimum = 1, maximum = 4;
 		int chooseMoveType = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 		hungrytick -= 1;
@@ -47,22 +50,28 @@ class FarmAnimal {
 				break;
 		}
 	}
-	boolean isProducingProduct() {
+	
+	protected boolean isProducingProduct() {
 		return producingproduct;
 	}
-	void setProducingProduct(boolean _producingproduct){
+
+	protected void setProducingProduct(boolean _producingproduct){
 		producingproduct = _producingproduct;
 	}
-	boolean isHungry(){
+
+	protected boolean isHungry(){
 		return hungry;
 	}
-	void setHungry(boolean _hungry){
+
+	protected void setHungry(boolean _hungry){
 		hungry = _hungry;
 	}
-	Point getCurrentPosition(){
+
+	protected Point getCurrentPosition(){
 		return currentPosition;
 	}
-	void setCurrentPosition(Point _currentPosition){
+
+	protected void setCurrentPosition(Point _currentPosition){
 		currentPosition = _currentPosition;
 	}
 }

@@ -4,8 +4,8 @@ import point.Point;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-class Bebek extends EggProducingFarmAnimal{
-	Bebek() {
+class Bebek extends EggProducingFarmAnimal implements Renderable {
+	public Bebek() {
 		int minimum = 0, maximum = 2;
 		int newX = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 		currentPosition.setX(newX);
@@ -14,20 +14,27 @@ class Bebek extends EggProducingFarmAnimal{
 		int newY = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 		setHungryTick(8);
 	}
-	Bebek(int x, int y) {
+
+	public Bebek(int x, int y) {
 		Point cur = new Point(x,y);
 		setCurrentPosition(cur);
 		setHungryTick(8);
 	}
-	void Sound() {
+
+	public void Sound() {
 		System.out.println("Quack!");
 	}
-	void Eat(/*Land _Land*/) {
+
+	public void Eat(/*Land _Land*/) {
 		if (/*(_land->getGrass()) && */(isHungry())) {
 			setHungryTick(8);
 			setHungry(false);
 			setProducingProduct(true);
 		}
 	}
+
+	public char render(){
+        return 'e';
+    }
 }
 

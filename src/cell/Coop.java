@@ -1,10 +1,13 @@
 package cell;
 
-public class Coop extends Land {
+public class Coop extends Land implements Renderable {
 
   public Coop() {
     super();
-    setRep('o');
+  }
+
+  public char render(){
+    return 'o';
   }
   
 }

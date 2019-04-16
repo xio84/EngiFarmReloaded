@@ -1,13 +1,13 @@
 package cell;
 
-public class Grassland extends Land {
+public class Grassland extends Land implements Renderable {
 
   public Grassland() {
     super();
   }
 
   public char render() {
-    if(Grass) {
+    if (Grass) {
       return('*');
     }
     else {

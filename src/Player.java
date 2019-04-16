@@ -3,7 +3,7 @@ import java.util.*;
 import Point.*;
 import LinkedList.*;
 
-public class Player extends Renderable{
+public class Player implements Renderable{
     protected int money;
     protected int water;
     protected LinkedList<Product> inventory;
@@ -82,8 +82,11 @@ public class Player extends Renderable{
                 currentPosition.setX(currentPosition.getX()+1);
             }
         } else {
-            cout << "JANGAN SERONG-SERONG MAS, FOKUS";
+            System.out.println("JANGAN SERONG-SERONG MAS, FOKUS");
         }
     }
 
+    public char render(){
+        return 'P';
+    }
 }

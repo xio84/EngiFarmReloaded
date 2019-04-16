@@ -1,10 +1,9 @@
 package cell;
 
-public class Cell extends Renderable {
+public class Cell implements Renderable {
   protected boolean Grass;
 
   public Cell() {
-    super();
     Grass = false;
   }
 
@@ -21,7 +20,7 @@ public class Cell extends Renderable {
       return('*');
     }
     else {
-      return(rep);
+      return('.');
     }
   }
 }

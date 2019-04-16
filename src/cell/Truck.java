@@ -1,12 +1,11 @@
 package cell;
 
-public class Truck extends Facility {
+public class Truck extends Facility implements Renderable {
   private int CooldownTime;
 
   public Truck() {
     super();
     CooldownTime = 0;
-    setRep('t');
   }
 
   public int getCooldownTime() {
@@ -17,4 +16,7 @@ public class Truck extends Facility {
     CooldownTime = _Cooldown;
   }
   
+  public char render(){
+    return 'T';
+  }
 }
