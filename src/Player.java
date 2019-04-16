@@ -1,7 +1,10 @@
 import point.Point;
+import products.FarmProduct;
 import products.Product;
 import renderables.Renderable;
 import linkedlist.LinkedList;
+//import animals.EggProducingFarmAnimal;
+import animals.*;
 
 public class Player implements Renderable{
     protected int money;
@@ -88,6 +91,14 @@ public class Player implements Renderable{
         } else {
             System.out.println("JANGAN SERONG-SERONG MAS, FOKUS");
         }
+    }
+
+    public void talk(FarmAnimal _animal){
+        _animal.Sound();
+    }
+
+    public void kill(FarmAnimal _animal){
+        Ayam A = new Ayam();
     }
 
     public char render(){
