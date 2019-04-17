@@ -2,7 +2,6 @@ package animals;
 
 import point.Point;
 
-import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 class FarmAnimal {

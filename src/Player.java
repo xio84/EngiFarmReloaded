@@ -15,7 +15,7 @@ public class Player implements Renderable {
         money = 0;
         water = 0;
         currentView = 'W';
-        inventory = new LinkedList<Product>();
+        inventory = new LinkedList<>();
         currentPosition = new Point(0,0);
     }
 

@@ -8,11 +8,11 @@ import java.util.concurrent.ThreadLocalRandom;
 class Sapi extends MilkProducingFarmAnimal implements Renderable {
 	public Sapi() {
 		int minimum = 4, maximum = 7;
-		int newX = 0;//ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
+		int newX = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 //		currentPosition.setX(newX);
 		minimum = 0;
 		maximum = 5;
-		int newY = 0;//ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
+		int newY = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 //		currentPosition.setY(newY);
 		setCurrentPosition(new Point(newX,newY));
 		setHungryTick(11);
