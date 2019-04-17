@@ -1,10 +1,12 @@
 import point.Point;
+import products.FarmProduct;
 import products.Product;
 import renderables.Renderable;
+import linkedlist.LinkedList;
+//import animals.EggProducingFarmAnimal;
+import animals.*;
 
-import java.util.LinkedList;
-
-public class Player implements Renderable {
+public class Player implements Renderable{
     protected int money;
     protected int water;
     protected LinkedList<Product> inventory;
@@ -20,7 +22,11 @@ public class Player implements Renderable {
     }
 
     public Player(int _money, int _water, LinkedList<Product> _inventory, Point _currentPosition, char _currentView){
-
+        money = _money;
+        water = _water;
+        currentView = _currentView;
+        currentPosition = new Point( _currentPosition.getX(), _currentPosition.getY());
+        inventory = _inventory;
     }
 
     public int getMoney(){
@@ -85,6 +91,14 @@ public class Player implements Renderable {
         } else {
             System.out.println("JANGAN SERONG-SERONG MAS, FOKUS");
         }
+    }
+
+    public void talk(FarmAnimal _animal){
+        _animal.Sound();
+    }
+
+    public void kill(FarmAnimal _animal){
+        Ayam A = new Ayam();
     }
 
     public char render(){
