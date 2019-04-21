@@ -2,6 +2,7 @@ package animals;
 
 import point.Point;
 import renderables.Renderable;
+import cell.Cell;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -26,8 +27,8 @@ public class Babi extends MeatProducingFarmAnimal implements Renderable {
 		System.out.println("Oink!");
 	}
 
-	public void Eat(/*Land _Land*/) {
-		if (/*(_land->getGrass()) && */(isHungry())) {
+	public void Eat(Cell temp) {
+		if ((temp.getGrass()) && (isHungry())) {
 			setHungryTick(10);
 			setHungry(false);
 			setProducingProduct(true);
