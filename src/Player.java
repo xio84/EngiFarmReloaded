@@ -255,14 +255,22 @@ public class Player implements Renderable{
           else {
               int i = 0;
               int sum = 0;
-              while(getInventory(i) != null) {
-                  sum += inventory.get(i).getPrice();
-                  i++;
+              while(true) {
+                  try {
+                      sum += inventory.get(i).getPrice();
+                      i++;
+                  } catch (NullPointerException e) {
+                    break;
+                  }
               }
               i--;
-              while(getInventory(i) != null) {
-                  Product haha = inventory.remove();
-                  i--;
+              while(true) {
+                  try {
+                      Product haha = inventory.remove();
+                      i--;
+                  } catch (NullPointerException e) {
+                      break;
+                  }
               }
               money += sum;
               f.setCooldownTime(15);

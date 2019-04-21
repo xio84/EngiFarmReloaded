@@ -1,6 +1,8 @@
 import linkedlist.LinkedList;
 import animals.*;
 import cell.*;
+import org.junit.Assert;
+
 import java.lang.*;
 import java.util.Vector;
 
@@ -33,7 +35,7 @@ class Map{
         height = 10;
         Engi = new Player();
 
-        Positions = new Cell [height][width];
+        Positions = new Cell [height+1][width+1];
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
                 Positions[i][j] = new Cell();
@@ -64,7 +66,7 @@ class Map{
         height = _h;
         Engi = new Player();
 
-        Positions = new Cell [height][width];
+        Positions = new Cell [height+1][width+1];
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
                 Positions[i][j] = new Cell();
@@ -148,7 +150,7 @@ class Map{
         System.out.println("before: " + Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()].render());
         // Land temp = dynamic_cast<Land>(Positions[Engi.getCurrentPosition().getX()][Engi.getCurrentPosition().getY()]);
         Cell temp = Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()];
-        Engi.Grow(temp);
+        Engi.grow(temp);
         System.out.println("after: " + Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()].render());
         System.out.println("after: " + Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()].getGrass());
         System.out.println("after: " + temp.render());
@@ -158,11 +160,11 @@ class Map{
     public void cutGrass(){
         // Land& temp = dynamic_cast<Land&>(Positions[Engi.getCurrentPosition().getX()][Engi.getCurrentPosition().getY()]);
         // Positions[Engi.getCurrentPosition().getX()][Engi.getCurrentPosition().getY()].setRep('X');
-        System.out.println("growing");
+        System.out.println("cutting");
         System.out.println("before: " + Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()].render());
         // Land temp = dynamic_cast<Land>(Positions[Engi.getCurrentPosition().getX()][Engi.getCurrentPosition().getY()]);
         Cell temp = Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()];
-        Engi.Cut(temp);
+        Engi.cut(temp);
         System.out.println("after: " + Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()].render());
         System.out.println("after: " + Positions[Engi.getCurrentPosition().getY()][Engi.getCurrentPosition().getX()].getGrass());
         System.out.println("after: " + temp.render());
@@ -193,11 +195,12 @@ class Map{
         for (int k = 0; k < listOfAnimal.size(); k++){
             listOfAnimal.get(k).setHungryTick(listOfAnimal.get(k).getHungryTick() - 1);
             AnimalExistsCount[listOfAnimal.get(k).getCurrentPosition().getX()][listOfAnimal.get(k).getCurrentPosition().getY()]--;
-            listOfAnimal.get(k).move();
+                listOfAnimal.get(k).move();
             AnimalExistsCount[listOfAnimal.get(k).getCurrentPosition().getX()][listOfAnimal.get(k).getCurrentPosition().getY()]++;
             // Land temp = dynamic_cast<Land>(Positions[listOfAnimal.get(k).getCurrentPosition().getX()][listOfAnimal.get(k).getCurrentPosition().getY()]);
             Cell temp = Positions[listOfAnimal.get(k).getCurrentPosition().getX()][listOfAnimal.get(k).getCurrentPosition().getY()];
-            listOfAnimal.get(k).Eat(temp);
+            if (temp != null)
+                listOfAnimal.get(k).Eat(temp);
         }
         for (int k = 0; k<listOfTruck.size(); k++){
             Truck t = (Truck) listOfTruck.get(k);
@@ -255,34 +258,50 @@ class Map{
                 System.out.print("Inventory:");
                 renderedInventory = renderedInventory + "Inventory:<br/>";
             }
-            else if ((Engi.getInventory(i) != null) && (i <= 7)) {
-                System.out.print(" - ");
-//                assert(Engi.getInventory(i) != null && "Null Pointer detected");
-                System.out.print(Engi.getInventory(i).toString());
-                renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
-                if (i == 7){
-                    System.out.print(" - etc...");
+            else if (i <= 7) {
+                try{
+                    System.out.print(" - ");
+    //                assert(Engi.getInventory(i) != null && "Null Pointer detected");
+                    System.out.print(Engi.getInventory(i).toString());
+                    renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
+                    if (i == 7){
+                        System.out.print(" - etc...");
+                    }
+                }
+                catch(Exception e){
+
                 }
             }
             else if (!moneyPrinted){
                 moneyPrinted = true;
                 System.out.print("Money: " + Engi.getMoney());
-                if (Engi.getInventory(i) != null)
+                try{
                     renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
+                }
+                catch(Exception e){
+
+                }
             }
             else if (!waterPrinted){
                 waterPrinted = true;
                 System.out.print("Water: " + Engi.getWater());
-                if (Engi.getInventory(i) != null)
+                try {
                     renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
-            }
-            else if (Engi.getInventory(i) != null)
-                renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
+                }
+                catch(Exception e){
 
-            if (Engi.getInventory(i) == null && !inventoryDone) {
-                inventoryDone = true;
-                renderedInventory = renderedInventory + "end<br/>";
+                }
             }
+            else
+                try{
+                    renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
+                }
+                catch(Exception e){
+                    if (!inventoryDone) {
+                        inventoryDone = true;
+                        renderedInventory = renderedInventory + "end<br/>";
+                    }
+                }
 
             System.out.println();
         }

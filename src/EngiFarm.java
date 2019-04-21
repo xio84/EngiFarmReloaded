@@ -132,11 +132,11 @@ public class EngiFarm implements ActionListener{
             Point curPos = game.Engi.getCurrentPosition();
             try {
                 if (game.checkAnimalAt(curPos.getY(), curPos.getX()))
-                    game.Engi.Interact(game.getAnimalAt(curPos.getX(), curPos.getY()));
+                    game.Engi.interactAnimal(game.getAnimalAt(curPos.getX(), curPos.getY()));
                 else{
                     Cell c = game.getCell(curPos.getY(), curPos.getX());
 //                        auto temp = dynamic_cast<Facility>(c);
-                    game.Engi.Interact((Facility) c);
+                    game.Engi.interactFacility((Facility) c);
                 }
             } catch(Exception err) {
 
@@ -343,14 +343,15 @@ public class EngiFarm implements ActionListener{
                 Point curPos = game.Engi.getCurrentPosition();
                 try {
                     if (game.checkAnimalAt(curPos.getY(), curPos.getX()))
-                        game.Engi.Interact(game.getAnimalAt(curPos.getX(), curPos.getY()));
+                        game.Engi.interactAnimal(game.getAnimalAt(curPos.getX(), curPos.getY()));
                     else{
                         Cell c = game.getCell(curPos.getY(), curPos.getX());
 //                        auto temp = dynamic_cast<Facility>(c);
-                        game.Engi.Interact((Facility) c);
+                        game.Engi.interactFacility((Facility) c);
                     }
                 } catch(Exception e) {
                     System.out.println("There's nothing to interact with");
+                    e.printStackTrace();
                 }
             }
             else if (command.equalsIgnoreCase("KILL")){

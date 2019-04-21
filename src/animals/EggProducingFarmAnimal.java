@@ -1,5 +1,7 @@
 package animals;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class EggProducingFarmAnimal extends FarmAnimal {
 	public void move(){
 		int minimum = 1, maximum = 4;
