@@ -5,6 +5,7 @@ import linkedlist.LinkedList;
 import animals.*;
 import cell.*;
 import java.lang.*;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Player implements Renderable{
@@ -212,22 +213,140 @@ public class Player implements Renderable{
               Cheese C = new Cheese();
               found = false;
               for(int i = 0; i < C.getIngredients().size(); i++) {
-                x = getInventory().find();
+                x = -1;
+                for(int j = 0; i < getInventory().size();j++) {
+                    if (C.getIngredients().get(i).contains(getInventory(j))) {
+                        x = j;
+                        break;
+                    }
+                }
+                if(x == -1) {
+                    getInventory().concat(Temp);
+                    found = true;
+                    break;
+                }
+                else {
+                    Temp.add(getInventory().delIndex(x));
+                }
+              }
+              if(!found) {
+                getInventory().add(C);
+              }
+              else {
+                  System.out.println("Bahan tidak cukup");
               }
           }
           else if(input == 2) {
-              CheeseSteak P = new CheeseSteak();
+              CheeseSteak CS = new CheeseSteak();
+              found = false;
+              for(int i = 0; i < CS.getIngredients().size(); i++) {
+                  x = -1;
+                  for(int j = 0; i < getInventory().size();j++) {
+                      if (CS.getIngredients().get(i).contains(getInventory(j))) {
+                          x = j;
+                          break;
+                      }
+                  }
+                  if(x == -1) {
+                      getInventory().concat(Temp);
+                      found = true;
+                      break;
+                  }
+                  else {
+                      Temp.add(getInventory().delIndex(x));
+                  }
+              }
+              if(!found) {
+                  getInventory().add(CS);
+              }
+              else {
+                  System.out.println("Bahan tidak cukup");
+              }
           }
           else if(input == 3) {
-              Mayonnaise P = new Mayonnaise();
+              Mayonnaise M = new Mayonnaise();
+              found = false;
+              for(int i = 0; i < M.getIngredients().size(); i++) {
+                  x = -1;
+                  for(int j = 0; i < getInventory().size();j++) {
+                      if (M.getIngredients().get(i).contains(getInventory(j))) {
+                          x = j;
+                          break;
+                      }
+                  }
+                  if(x == -1) {
+                      getInventory().concat(Temp);
+                      found = true;
+                      break;
+                  }
+                  else {
+                      Temp.add(getInventory().delIndex(x));
+                  }
+              }
+              if(!found) {
+                  getInventory().add(M);
+              }
+              else {
+                  System.out.println("Bahan tidak cukup");
+              }
           }
           else if(input == 4) {
-              MixSausage P = new MixSausage();
+              MixSausage MS = new MixSausage();
+              found = false;
+              for(int i = 0; i < MS.getIngredients().size(); i++) {
+                  x = -1;
+                  for(int j = 0; i < getInventory().size();j++) {
+                      if (MS.getIngredients().get(i).contains(getInventory(j))) {
+                          x = j;
+                          break;
+                      }
+                  }
+                  if(x == -1) {
+                      getInventory().concat(Temp);
+                      found = true;
+                      break;
+                  }
+                  else {
+                      Temp.add(getInventory().delIndex(x));
+                  }
+              }
+              if(!found) {
+                  getInventory().add(MS);
+              }
+              else {
+                  System.out.println("Bahan tidak cukup");
+              }
           }
           else {
-              SteakTartare P = new SteakTartare();
+              SteakTartare ST = new SteakTartare();
+              found = false;
+              for(int i = 0; i < ST.getIngredients().size(); i++) {
+                  x = -1;
+                  for(int j = 0; i < getInventory().size();j++) {
+                      if (ST.getIngredients().get(i).contains(getInventory(j))) {
+                          x = j;
+                          break;
+                      }
+                  }
+                  if(x == -1) {
+                      getInventory().concat(Temp);
+                      found = true;
+                      break;
+                  }
+                  else {
+                      Temp.add(getInventory().delIndex(x));
+                  }
+              }
+              if(!found) {
+                  getInventory().add(ST);
+              }
+              else {
+                  System.out.println("Bahan tidak cukup");
+              }
           }
-
+      }
+      else {
+          System.out.println("BELI DULU MAS");
       }
     }
 
