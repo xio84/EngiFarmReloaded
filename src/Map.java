@@ -18,6 +18,9 @@ class Map{
     private Vector listOfTruck;
     private int width, height;
 
+    private String renderedMap;
+    private String renderedInventory;
+
     public Player Engi;
     /**
      * Construct Map class with default value.
@@ -37,7 +40,7 @@ class Map{
             }
         }
 
-        AnimalExistsCount = new int [height][width];
+        AnimalExistsCount = new int [height+1][width+1];
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
                 AnimalExistsCount[i][j] = 0;
@@ -68,7 +71,7 @@ class Map{
             }
         }
 
-        AnimalExistsCount = new int [height][width];
+        AnimalExistsCount = new int [height+1][width+1];
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
                 AnimalExistsCount[i][j] = 0;
@@ -82,10 +85,22 @@ class Map{
     }
 
     /**
-     * Destruct Map class.
+     * Get the value of renderedInventory
      *
-     * Delocate Positions.
+     * @return the String stored in renderedInventory
      */
+    public String getRenderedInventory(){
+        return renderedInventory;
+    }
+
+    /**
+     * Get the value of renderedMap
+     *
+     * @return the String stored in renderedMap
+     */
+    public String getRenderedMap(){
+        return renderedMap;
+    }
 
     /**
      * Get the value Cell of Positions[i][j] (Getter).
@@ -175,7 +190,7 @@ class Map{
     }
 
     public void timePassed(){
-        for (int k = 0; k < AnimalCount; k++){
+        for (int k = 0; k < listOfAnimal.size(); k++){
             listOfAnimal.get(k).setHungryTick(listOfAnimal.get(k).getHungryTick() - 1);
             AnimalExistsCount[listOfAnimal.get(k).getCurrentPosition().getX()][listOfAnimal.get(k).getCurrentPosition().getY()]--;
             listOfAnimal.get(k).move();
@@ -203,17 +218,24 @@ class Map{
     public void print(){
         boolean moneyPrinted = false;
         boolean waterPrinted = false;
+        boolean inventoryDone = false;
+
+        renderedMap = "<html>";
+        renderedInventory = "<html>";
+
         for (int i = 0; i < height; i++){
             // untuk peta
             for (int j = 0; j < width; j++){
                 if ((Engi.getCurrentPosition().getX() == j) && (Engi.getCurrentPosition().getY() == i)){
                     System.out.print(Engi.render());
+                    renderedMap = renderedMap + Engi.render();
                 }
                 else if ((AnimalExistsCount[i][j] > 0)){
                     for (int k = 0; k < AnimalCount; k++){
 //                        assert(listOfAnimal.get(k) != null && "Null Pointer detected");
                         if ((listOfAnimal.get(k).getCurrentPosition().getX() == i) && (listOfAnimal.get(k).getCurrentPosition().getY() == j)){
                             System.out.print(listOfAnimal.get(k).render());
+                            renderedMap = renderedMap + listOfAnimal.get(k).render();
                             break;
                         }
                     }
@@ -221,18 +243,23 @@ class Map{
                 else {
 //                    assert(Positions[i][j] != null && "Null Pointer detected");
                     System.out.print(Positions[i][j].render());
+                    renderedMap = renderedMap + Positions[i][j].render();
                 }
                 System.out.print(" ");
+                renderedMap = renderedMap + " ";
             }
             System.out.print("  ");
+            renderedMap = renderedMap + "  <br/>";
 
             if (i == 0) {
                 System.out.print("Inventory:");
+                renderedInventory = renderedInventory + "Inventory:<br/>";
             }
             else if ((Engi.getInventory(i) != null) && (i <= 7)) {
                 System.out.print(" - ");
 //                assert(Engi.getInventory(i) != null && "Null Pointer detected");
                 System.out.print(Engi.getInventory(i).toString());
+                renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
                 if (i == 7){
                     System.out.print(" - etc...");
                 }
@@ -240,13 +267,27 @@ class Map{
             else if (!moneyPrinted){
                 moneyPrinted = true;
                 System.out.print("Money: " + Engi.getMoney());
+                if (Engi.getInventory(i) != null)
+                    renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
             }
             else if (!waterPrinted){
                 waterPrinted = true;
                 System.out.print("Water: " + Engi.getWater());
+                if (Engi.getInventory(i) != null)
+                    renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
+            }
+            else if (Engi.getInventory(i) != null)
+                renderedInventory = renderedInventory + " - " + Engi.getInventory(i).toString() + "<br/>";
+
+            if (Engi.getInventory(i) == null && !inventoryDone) {
+                inventoryDone = true;
+                renderedInventory = renderedInventory + "end<br/>";
             }
 
             System.out.println();
         }
+
+        renderedMap = renderedMap + "<html/>";
+        renderedInventory = renderedInventory + "<html/>";
     }
 }
