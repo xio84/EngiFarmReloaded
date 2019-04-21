@@ -5,7 +5,6 @@ import linkedlist.LinkedList;
 import animals.*;
 import cell.*;
 import java.lang.*;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Player implements Renderable{
@@ -219,7 +218,7 @@ public class Player implements Renderable{
      * on the same block if available
      * @param _animal to specify which animal to interact with
      */
-    public void Interact(FarmAnimal _animal) {
+    public void interactAnimal(FarmAnimal _animal) {
         if(_animal instanceof Ayam) {
             Product _chickenEgg = new ChickenEgg();
             inventory.addFirst(_chickenEgg);
@@ -243,7 +242,7 @@ public class Player implements Renderable{
      * on the same block if available
      * @param _facility to specify which product to interact with
      */
-    public void Interact(Facility _facility) {
+    public void interactFacility(Facility _facility) {
 
       if(_facility instanceof Well) {
           setWater(10);
@@ -433,7 +432,7 @@ public class Player implements Renderable{
      * method to grow grass if water amount is enough
      * @param _land to specify which land to grow
      */
-    public void Grow(Cell _land) {
+    public void grow(Cell _land) {
         System.out.println("Checking...");
         if((water >= 1) && (!_land.getGrass())) {
             System.out.println("Growing grass...");
@@ -448,7 +447,7 @@ public class Player implements Renderable{
      * method to remove grass from land
      * @param _land to specify which land to cut
      */
-    public void Cut(Cell _land) {
+    public void cut(Cell _land) {
         System.out.println("Checking...");
         if((_land.getGrass())) {
             System.out.println("Cutting grass...");
