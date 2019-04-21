@@ -12,6 +12,7 @@ public class Facility extends Cell {
   }
 
   public void setGrass(boolean _Grass) {
+
     System.out.println("Facility tidak dapat ditumbuhi grass");
   }
   

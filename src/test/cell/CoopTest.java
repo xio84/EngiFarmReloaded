@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BarnTest {
+public class CoopTest {
 
     @Test
     public void render() {
-        Barn B = new Barn();
-        Assert.assertEquals('b',B.render());
+        Coop C = new Coop();
+        Assert.assertEquals('o',C.render());
     }
 }

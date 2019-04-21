@@ -5,11 +5,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BarnTest {
+public class MixerTest {
 
     @Test
     public void render() {
-        Barn B = new Barn();
-        Assert.assertEquals('b',B.render());
+        Mixer M = new Mixer();
+        Assert.assertEquals('M',M.render());
     }
 }
