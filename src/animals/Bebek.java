@@ -5,7 +5,7 @@ import renderables.Renderable;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-class Bebek extends EggProducingFarmAnimal implements Renderable {
+public class Bebek extends EggProducingFarmAnimal implements Renderable {
 	public Bebek() {
 		int minimum = 0, maximum = 2;
 		int newX = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);

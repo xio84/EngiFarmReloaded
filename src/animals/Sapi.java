@@ -5,7 +5,7 @@ import renderables.Renderable;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-class Sapi extends MilkProducingFarmAnimal implements Renderable {
+public class Sapi extends MilkProducingFarmAnimal implements Renderable {
 	public Sapi() {
 		int minimum = 4, maximum = 7;
 		int newX = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
