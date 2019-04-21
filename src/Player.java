@@ -129,7 +129,7 @@ public class Player implements Renderable{
      * @param _product to set item in inventory based on current index
      */
     public void setInventory(int _index, Product _product){
-        // inventory.setData(_product, _index);
+        inventory.set(_product, _index);
     }
 
     /**
