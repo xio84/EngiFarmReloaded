@@ -1,5 +1,5 @@
 package animals;
 
-class MeatProducingFarmAnimal extends FarmAnimal {
+public class MeatProducingFarmAnimal extends FarmAnimal {
 	
 }

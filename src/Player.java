@@ -369,4 +369,12 @@ public class Player implements Renderable{
             System.out.println("Success");
         }
     }
+
+    /**
+     * addInventory is a function to add another object into inventory.
+     * @param _product is a Product to name what is being stored.
+     */
+    public void addInventory(Product _product){
+        inventory.addFirst(_product);
+    }
 }

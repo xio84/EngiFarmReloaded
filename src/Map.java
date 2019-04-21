@@ -28,6 +28,7 @@ class Map{
     public Map(){
         width = 10;
         height = 10;
+        Engi = new Player();
 
         Positions = new Cell [height][width];
         for (int i = 0; i < height; i++){
@@ -58,6 +59,7 @@ class Map{
     public Map(int _w, int _h){
         width = _w;
         height = _h;
+        Engi = new Player();
 
         Positions = new Cell [height][width];
         for (int i = 0; i < height; i++){
@@ -116,7 +118,7 @@ class Map{
     }
 
     public FarmAnimal getAnimalAt(int i, int j){
-        for (int k = 1; k <= AnimalCount; k++){
+        for (int k = 0; k < AnimalCount; k++){
             if ((listOfAnimal.get(k).getCurrentPosition().getX() == j) && (listOfAnimal.get(k).getCurrentPosition().getY() == i)){
                 return listOfAnimal.get(k);
             }
@@ -173,7 +175,7 @@ class Map{
     }
 
     public void timePassed(){
-        for (int k = 1; k <= AnimalCount; k++){
+        for (int k = 0; k < AnimalCount; k++){
             listOfAnimal.get(k).setHungryTick(listOfAnimal.get(k).getHungryTick() - 1);
             AnimalExistsCount[listOfAnimal.get(k).getCurrentPosition().getX()][listOfAnimal.get(k).getCurrentPosition().getY()]--;
             listOfAnimal.get(k).move();
@@ -208,7 +210,7 @@ class Map{
                     System.out.print(Engi.render());
                 }
                 else if ((AnimalExistsCount[i][j] > 0)){
-                    for (int k = 1; k <= AnimalCount; k++){
+                    for (int k = 0; k < AnimalCount; k++){
 //                        assert(listOfAnimal.get(k) != null && "Null Pointer detected");
                         if ((listOfAnimal.get(k).getCurrentPosition().getX() == i) && (listOfAnimal.get(k).getCurrentPosition().getY() == j)){
                             System.out.print(listOfAnimal.get(k).render());
@@ -230,7 +232,7 @@ class Map{
             else if ((Engi.getInventory(i) != null) && (i <= 7)) {
                 System.out.print(" - ");
 //                assert(Engi.getInventory(i) != null && "Null Pointer detected");
-                System.out.print(Engi.getInventory(i).getType());
+                System.out.print(Engi.getInventory(i).toString());
                 if (i == 7){
                     System.out.print(" - etc...");
                 }

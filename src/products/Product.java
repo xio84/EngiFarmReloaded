@@ -40,5 +40,4 @@ public abstract class Product {
         return this.getClass().equals(obj.getClass());
     }
 
-    public abstract boolean getType();
 }
