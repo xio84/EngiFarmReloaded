@@ -15,9 +15,6 @@ public class Player implements Renderable{
     protected Point currentPosition;
     protected char currentView;
 
-    /**
-     * Player empty constructor
-     */
     public Player(){
         money = 0;
         water = 0;
@@ -26,14 +23,6 @@ public class Player implements Renderable{
         currentPosition = new Point(0,0);
     }
 
-    /**
-     * Player constructor with parameters
-     * @param _money : to store player's current amount of money
-     * @param _water : to store player's current amount of water
-     * @param _inventory : to store player's current item
-     * @param _currentPosition : to store player's current position in map
-     * @param _currentView : to store player's current view in his position
-     */
     public Player(int _money, int _water, LinkedList<Product> _inventory, Point _currentPosition, char _currentView){
         money = _money;
         water = _water;
@@ -42,100 +31,54 @@ public class Player implements Renderable{
         inventory = _inventory;
     }
 
-    /**
-     * getter
-     * @return money to return player's amount of money
-     */
     public int getMoney(){
 
         return money;
     }
 
-    /**
-     * getter
-     * @return water to return player's amount of water
-     */
     public int getWater(){
 
         return water;
     }
 
-    /**
-     * getter
-     * @return player's current position in map
-     */
     public Point getCurrentPosition(){
 
         return currentPosition;
     }
 
-    /**
-     * getter
-     * @return player's current view (A,S,W,D)
-     */
     public char getCurrentView(){
 
         return currentView;
     }
 
-    /**
-     * getter to return inventory based on index
-     * @param _index to specify which index to access
-     * @return current item in inventory based on index
-     */
     public Product getInventory(int _index){
 
         return inventory.get(_index);
     }
 
-    /**
-     * getter to return inventory
-     * @return list of inventory
-     */
     public LinkedList<Product> getInventory() {
         return inventory;
     }
 
-    /**
-     * setter
-     * @param _money to set current player's money
-     */
     public void setMoney(int _money){
 
         money = _money;
     }
 
-    /**
-     * setter
-     * @param _water to set current player's water inventory
-     */
     public void setWater(int _water){
 
         water = _water;
     }
 
-    /**
-     * setter
-     * @param _currentPosition to set player's current position
-     */
     public void setCurrentPosition(Point _currentPosition){
 
         currentPosition = _currentPosition;
     }
 
-    /**
-     * setter
-     * @param _index to specify which index to edit
-     * @param _product to set item in inventory based on current index
-     */
     public void setInventory(int _index, Product _product){
-        inventory.set(_product, _index);
+        // inventory.setData(_product, _index);
     }
 
-    /**
-     * method to move player 1 block each time
-     * @param _direction to specify which direction to go (A,S,W,D)
-     */
     public void move(char _direction){
         if (_direction == 'W' || _direction == 'w'){
             currentView = 'W';
@@ -162,18 +105,10 @@ public class Player implements Renderable{
         }
     }
 
-    /**
-     * method to talk (call them to sound()) with animal in the same block
-     * @param _animal to specify which animal to interact with
-     */
     public void talk(FarmAnimal _animal){
         _animal.Sound();
     }
 
-    /**
-     * method to kill animal on the same block and get their resources if available
-     * @param _animal to specify which animal to kill
-     */
     public void kill(FarmAnimal _animal){
         System.out.println("Start killing");
         if(_animal instanceof Ayam) {
@@ -206,19 +141,10 @@ public class Player implements Renderable{
 
     }
 
-    /**
-     * method to show player on map
-     * @return char P
-     */
     public char render(){
         return 'P';
     }
 
-    /**
-     * to specifically interact with animal (getting their resources)
-     * on the same block if available
-     * @param _animal to specify which animal to interact with
-     */
     public void Interact(FarmAnimal _animal) {
         if(_animal instanceof Ayam) {
             Product _chickenEgg = new ChickenEgg();
@@ -238,11 +164,6 @@ public class Player implements Renderable{
         }
     }
 
-    /**
-     * to specifically interact with facility
-     * on the same block if available
-     * @param _facility to specify which product to interact with
-     */
     public void Interact(Facility _facility) {
 
       if(_facility instanceof Well) {
@@ -429,10 +350,6 @@ public class Player implements Renderable{
       }
     }
 
-    /**
-     * method to grow grass if water amount is enough
-     * @param _land to specify which land to grow
-     */
     public void Grow(Cell _land) {
         System.out.println("Checking...");
         if((water >= 1) && (!_land.getGrass())) {
@@ -444,10 +361,6 @@ public class Player implements Renderable{
         }
     }
 
-    /**
-     * method to remove grass from land
-     * @param _land to specify which land to cut
-     */
     public void Cut(Cell _land) {
         System.out.println("Checking...");
         if((_land.getGrass())) {
