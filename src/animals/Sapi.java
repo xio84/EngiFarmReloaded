@@ -2,6 +2,7 @@ package animals;
 
 import point.Point;
 import renderables.Renderable;
+import cell.Cell;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -28,8 +29,8 @@ public class Sapi extends MilkProducingFarmAnimal implements Renderable {
 		System.out.println("Moo!");
 	}
 
-	public void Eat(/*Land _Land*/) {
-		if (/*(_land->getGrass()) && */(isHungry())) {
+	public void Eat(Cell temp) {
+		if ((temp.getGrass()) && (isHungry())) {
 			setHungryTick(11);
 			setHungry(false);
 			setProducingProduct(true);
