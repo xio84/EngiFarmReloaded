@@ -360,4 +360,13 @@ public class Player implements Renderable{
             System.out.println("Success");
         }
     }
+
+    public void Cut(Cell _land) {
+        System.out.println("Checking...");
+        if((_land.getGrass())) {
+            System.out.println("Cutting grass...");
+            _land.setGrass(false);
+            System.out.println("Success");
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package animals;
 
+import cell.Cell;
 import point.Point;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -11,15 +12,15 @@ public class FarmAnimal {
 	protected boolean producingproduct;
 	protected Point currentPosition;
 
-	protected int getHungryTick() {
+	public int getHungryTick() {
 		return hungrytick;
 	}
 
-	protected void setHungryTick(int _hungrytick){
+	public void setHungryTick(int _hungrytick){
 		hungrytick = _hungrytick;
 	}
 
-	protected void move(){
+	public void move(){
 		int minimum = 1, maximum = 4;
 		int chooseMoveType = ThreadLocalRandom.current().nextInt(minimum, maximum + 1);
 		hungrytick -= 1;
@@ -66,11 +67,23 @@ public class FarmAnimal {
 		hungry = _hungry;
 	}
 
-	protected Point getCurrentPosition(){
+	public Point getCurrentPosition(){
 		return currentPosition;
 	}
 
 	protected void setCurrentPosition(Point _currentPosition){
 		currentPosition = _currentPosition;
+	}
+
+	public void Eat(Cell temp) {
+		System.out.println("No eating implemented");
+	}
+
+	public char render() {
+		return '?';
+	}
+
+	public void Sound() {
+		System.out.println("No sound implemented");
 	}
 }
