@@ -1,5 +1,7 @@
 package products;
 
+import linkedlist.LinkedList;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -7,7 +9,7 @@ import java.util.Set;
  * Class of SideProduct to be made in mixer
  *
  * @author Oksidian Tafly
- * @version 1.0
+ * @version 1.1
  * @since 2019-04-14
  */
 public class SideProduct extends Product {
@@ -51,38 +53,41 @@ public class SideProduct extends Product {
         this.ready = ready;
     }
 
-    public boolean available(ArrayList<Product> inventory){
+    public boolean available(LinkedList<Product> inventory){
         boolean result = true;
-        Product temp = new Mayonnaise();
+        int temp = -1;
         for (Set<Product> p: ingredients
-             ) {
+        ) {
             result = false;
-            for (Product q: inventory
-                 ) {
+            for (int i = 0; i<inventory.size(); i++) {
+                Product q = inventory.get(i);
                 if (p.contains(q)){
                     result = true;
                     madeOf.add(q);
-                    temp = q;
+                    temp = i;
                 }
             }
             if (!result){
                 break;
             }
             else{
-                inventory.remove(temp);
+                inventory.delIndex(temp);
             }
         }
-        inventory.addAll(madeOf);
+        for (Product x : madeOf
+        ) {
+            inventory.add(x);
+        }
         madeOf.clear();
         return result;
     }
 
-    public void make(ArrayList<Product> inventory){
+    public void make(LinkedList<Product> inventory){
         if (available(inventory)) {
             for (Set<Product> p: ingredients
             ) {
-                for (Product q: inventory
-                ) {
+                for (int i=0; i<inventory.size(); i++) {
+                    Product q = inventory.get(i);
                     if (p.contains(q)){
                         madeOf.add(q);
                     }
@@ -90,7 +95,8 @@ public class SideProduct extends Product {
             }
             for (Product q : madeOf
             ) {
-                inventory.remove(q);
+                int i = inventory.find(q);
+                inventory.delIndex(i);
             }
             ready = true;
         }
